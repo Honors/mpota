@@ -12,10 +12,16 @@ Roadmap
 
 Execution
 ---------
-To execute the current Scheme interpreter, run the following.
+To execute the a REPL for the current Scheme interpreter, run the following.
 
 ```sh
-$ ./interpret lambda.scm
+$ ./interpret repl.scm
+```
+
+To perform the current test procedure, run this command instead.
+
+```sh
+$ ./interpret test.scm
 ```
 
 Implementation
