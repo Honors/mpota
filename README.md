@@ -24,6 +24,35 @@ To perform the current test procedure, run this command instead.
 $ ./interpret test.scm
 ```
 
+The Assembly VM
+---------------
+To run sexpr based assembly in the VM:
+
+1. Make a Scheme file that will output assembly code.
+2. Pipe its output to a VM.
+
+An example Scheme program for outputting assembly:
+
+```scheme
+(load "prelude.scm")
+
+(define 
+  assembly 
+  '((label lam1)
+    ;; ...
+    (label main)
+    ;; ...
+    (label end)))
+
+(map write (reverse assembly))
+```
+
+A shell command to pipe its output to the VM.
+
+```sh
+$ ./interpret asm-test.scm 2> cat | ./interpret vm.scm
+```
+
 Implementation
 --------------
 ###Syntax
