@@ -1,4 +1,4 @@
-(load "prelude.scm")
+(load "build/prelude.scm")
 
 "  define `cond`, a version of `assoc` giving the 
 "" value, `set`, and `let`

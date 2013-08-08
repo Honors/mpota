@@ -1,4 +1,4 @@
-(load "prelude.scm")
+(load "build/prelude.scm")
 
 " (((lambda (x) (lambda (y) (x y))) (lambda (x) x)) 2)
 "

@@ -1,4 +1,4 @@
-(load "prelude.scm")
+(load "build/prelude.scm")
 
 " Builtin to the book's Language (Tarpits & Abstraction)
 "
