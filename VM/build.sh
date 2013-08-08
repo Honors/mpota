@@ -1,0 +1,1 @@
+./build/scheme $1 2> cat | ./build/scheme VM/vm.scm

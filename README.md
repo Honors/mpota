@@ -50,7 +50,7 @@ An example Scheme program for outputting assembly:
 A shell command to pipe its output to the VM.
 
 ```sh
-$ ./build/scheme VM/asm-test.scm 2> cat | ./build/scheme VM/vm.scm
+$ ./VM/build.sh VM/asm-test.scm
 ```
 
 Implementation
