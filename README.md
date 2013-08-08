@@ -53,7 +53,8 @@ The parsing of parentheses was one of the hardest aspects of this interpreter. I
 
 ```scheme
 (parens '(lam f lam x < < f > x > x))
-;; => '(lam f lam x ((f) x) x)
+" => '(lam f lam x ((f) x) x)
+"
 ```
 
 Learn More

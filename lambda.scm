@@ -107,7 +107,3 @@
   (set 'Y (evalpar '(lam z lam f < lam x < f < x x > > > < lam x < f < x x > > >) prelude) prelude))
 (define prelude 
   (set 'fixed (evalpar '(lam z < Y cursor >) prelude) prelude))
-
-(define prog '(fixed < cons 1 1 >))
-(write (parens prog))
-(write (eval (parens prog) prelude))
