@@ -15,13 +15,13 @@ Execution
 To execute the a REPL for the current Scheme interpreter, run the following.
 
 ```sh
-$ ./build/interpret interpreter/repl.scm
+$ ./build/scheme interpreter/repl.scm
 ```
 
 To perform the current test procedure, run this command instead.
 
 ```sh
-$ ./build/interpret interpreter/test.scm
+$ ./build/scheme interpreter/test.scm
 ```
 
 The Assembly VM
@@ -50,7 +50,7 @@ An example Scheme program for outputting assembly:
 A shell command to pipe its output to the VM.
 
 ```sh
-$ ./build/interpret VM/asm-test.scm 2> cat | ./build/interpret VM/vm.scm
+$ ./build/scheme VM/asm-test.scm 2> cat | ./build/scheme VM/vm.scm
 ```
 
 Implementation
