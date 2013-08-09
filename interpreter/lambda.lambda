@@ -1,0 +1,17 @@
+(< lam id
+  < lam true
+    < lam false
+      < lam cons
+        < lam nil
+          < lam car
+            < lam cdr
+              < lam null?
+                < id 1 > >
+              < lam l < l < lam a lam b false > <lam n true> > > >
+            < lam l < l < lam a lam b b > id > > >
+          < lam l < l < lam a lam b a > id > > >
+        < lam c lam n < n > id > >
+      < lam a lam b lam c lam n < < c > a > b > >
+    < lam a lam b < b > id > >	
+  < lam a lam b < a > id > >
+< lam x x >)
