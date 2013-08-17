@@ -76,20 +76,24 @@
 "" a lambda wrapped version of oneself prior to execution.
 "
 (define (evaler eval) (lambda (expr env)
-  (cond (((atom? expr) ((assocv expr env) '()))
+  (cond (((atom? expr) (list ((assocv expr env) '()) env))
          ((eqv? 'lam (car expr)) 
-	      (lambda (x) ((eval '()) (cddr expr) (set (cadr expr) x env))))
-	     ((null? (cdr expr)) ((eval '()) (car expr) env))
-	     (#t 
-	      (apply-set 
-	        ((eval '()) (car expr) env) 
-	        (map 
-	          (lambda (expr) ((eval '()) (list 'lam 'z expr) env)) 
-	          (cdr expr))))))))  
+	    (list (lambda (x) ((eval '()) (cddr expr) (set (cadr expr) x env))) env))
+	 ((null? (cdr expr)) (list (car ((eval '()) (car expr) env)) env))
+	 ((eqv? 'set (car expr)) (list #t (set (cadr expr) (lambda (z) (car ((eval '()) (caddr expr) env))) env)))
+	 (#t 
+	   (apply-set 
+	     (list
+  	       (car ((eval '()) (car expr) env))
+	         (map 
+	           (lambda (expr) 
+		     (car ((eval '()) (list 'lam 'z expr) env)))
+	           (cdr expr))
+	       env)))))))
 	          
 (define eval (Z evaler))	          
 (define (evalpar expr env)
-  (eval (parens expr) env))	 
+  (car (eval (parens expr) env)))
   
 " provide basic functions in a prelude
 "  
@@ -109,4 +113,11 @@
        (prelude (set 'fixed (evalpar '(lam z < Y cursor >) prelude) prelude)))
   (set! preludefinal prelude))
 (define prelude preludefinal)  
-(evalpar '(1) preludefinal)
+(define (eval-seq exprs m)
+  (if
+    (null? exprs)
+    m
+    (eval-seq (cdr exprs) (eval (car exprs) (cadr m)))))
+(let f (eval '(set c 1) preludefinal)
+  (car (eval '(c) (cadr f))))
+(car (eval-seq '((set c 1) (c)) (list #t preludefinal)))

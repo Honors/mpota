@@ -18,6 +18,12 @@ To execute the a REPL for the current Scheme interpreter, run the following.
 $ ./build/scheme interpreter/repl.scm
 ```
 
+To provide the REPL with a file of Lambda Calculus input, perform the following.
+
+```sh
+$ tr '\n' ' ' <  interpreter/lambda.lambda | ./build/scheme interpreter/repl.scm
+```
+
 To perform the current test procedure, run this command instead.
 
 ```sh
